@@ -61,7 +61,7 @@ def is_help_command(user_input):
 
 
 def is_validated_english_sentence(user_input):
-    """
+    '''
     Input:
         - user_input : 문자열값으로 사용자가 입력하는 문자
     Output:
@@ -83,7 +83,7 @@ def is_validated_english_sentence(user_input):
         False
         >>> mc.is_validated_english_sentence("This is Gachon University.")
         True
-    """
+    '''
     # ===Modify codes below=============
     # 조건에 따라 변환되어야 할 결과를 result 변수에 할당 또는 필요에 따라 자유로운 수정
     val_set = {'_', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '+', '=', '[', ']', '{', '}', 
@@ -283,12 +283,15 @@ def encoding_sentence(english_sentence):
     # print("eng_sentence=", english_sentence)
     result = ''
     flag = 1
+    # print("english_sentence=", english_sentence)
+    english_sentence = get_cleaned_english_sentence(english_sentence)
     for char in english_sentence:
         if char == ' ' and flag:
             flag = 0
             result += ' '
         elif char != ' ':
             flag = 1
+            # print("e_c input=", char)
             result += encoding_character(char) + ' '
     result.strip()
     return result
@@ -304,9 +307,8 @@ def main():
             print(get_help_message())
 
         elif is_validated_english_sentence(user_input):
-            cleaned_eng = get_cleaned_english_sentence(user_input)
             # print(cleaned_eng)
-            print(encoding_sentence(cleaned_eng))
+            print(encoding_sentence(user_input))
 
         elif is_validated_morse_code(user_input):
             print(decoding_sentence(user_input))
