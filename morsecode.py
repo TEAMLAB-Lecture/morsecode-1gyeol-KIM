@@ -245,7 +245,7 @@ def decoding_sentence(morse_sentence):
     # 조건에 따라 변환되어야 할 결과를 result 변수에 할당 또는 필요에 따라 자유로운 수정
     result = ''
     morse_sentence = morse_sentence.split(' ')
-    print("morse_sentence=", morse_sentence)
+    # print("morse_sentence=", morse_sentence)
     for code in morse_sentence:
         if code == '':
             result += ' '
@@ -313,3 +313,9 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+'''
+input_list = ["Hello!!", "Hi, Gachon", "This is,! CS50", "WTF!", "--. --", "--. --.  --. -  -  -  - . . . .",
+                        "::helo::", "0"]
+'''
