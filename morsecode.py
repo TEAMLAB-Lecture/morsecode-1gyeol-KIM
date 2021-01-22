@@ -250,7 +250,7 @@ def decoding_sentence(morse_sentence):
     #     else:
     #         result += decoding_character(code)
     # return result
-    result = "".join([decoding_character(char) if char != '' else ' ' for char in morse_sentence.split(' ')])
+    result = "".join([decoding_character(char) if char != '' else ' 'for char in morse_sentence.split(' ')])
     return result
     # ==================================
 
@@ -277,10 +277,13 @@ def encoding_sentence(english_sentence):
     # 조건에 따라 변환되어야 할 결과를 result 변수에 할당 또는 필요에 따라 자유로운 수정
     # print("eng_sentence=", english_sentence)
     result = ''
+    flag = 1
     for char in english_sentence:
-        if char == ' ':
+        if char == ' ' and flag:
+            flag = 0
             result += ' '
-        else:
+        elif char != ' ':
+            flag = 1
             result += encoding_character(char) + ' '
     result.strip()
     return result
