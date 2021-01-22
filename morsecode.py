@@ -90,7 +90,7 @@ def is_validated_english_sentence(user_input):
         if char.isdigit():
             return False
         if char in """_@#$%^&*()-+=[]{}"';:\|`~""":
-            return  False
+            return False
     remove_str_list = ".,!?"
     user_input = "".join([char for char in user_input if char not in remove_str_list]).strip()
     result = len(user_input) != 0
@@ -242,14 +242,15 @@ def decoding_sentence(morse_sentence):
     """
     # ===Modify codes below=============
     # 조건에 따라 변환되어야 할 결과를 result 변수에 할당 또는 필요에 따라 자유로운 수정
-    result = ''
-    morse_sentence = morse_sentence.split(' ')
-    # print("morse_sentence=", morse_sentence)
-    for code in morse_sentence:
-        if code == '':
-            result += ' '
-        else:
-            result += decoding_character(code)
+    # result = ''
+    # morse_sentence = morse_sentence.split(' ')
+    # for code in morse_sentence:
+    #     if code == '':
+    #         result += ' '
+    #     else:
+    #         result += decoding_character(code)
+    # return result
+    result = "".join([decoding_character(char) if char != '' else ' ' for char in morse_sentence.split(' ')])
     return result
     # ==================================
 
