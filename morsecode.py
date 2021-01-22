@@ -302,7 +302,7 @@ def main():
 
         elif is_validated_english_sentence(user_input):
             cleaned_eng = get_cleaned_english_sentence(user_input)
-            print(cleaned_eng)
+            # print(cleaned_eng)
             print(encoding_sentence(cleaned_eng))
 
         elif is_validated_morse_code(user_input):
