@@ -86,10 +86,12 @@ def is_validated_english_sentence(user_input):
     """
     # ===Modify codes below=============
     # 조건에 따라 변환되어야 할 결과를 result 변수에 할당 또는 필요에 따라 자유로운 수정
+    val_set = {'_', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '+', '=', '[', ']', '{', '}', 
+                '"', "'", ';', ':', "\\", '|', '`', '~'}
     for char in user_input:
         if char.isdigit():
             return False
-        if char in """_@#$%^&*()-+=[]{}"';:\|`~""":
+        if char in val_set:
             return False
     remove_str_list = ".,!?"
     user_input = "".join([char for char in user_input if char not in remove_str_list]).strip()
@@ -300,6 +302,7 @@ def main():
 
         elif is_validated_english_sentence(user_input):
             cleaned_eng = get_cleaned_english_sentence(user_input)
+            print(cleaned_eng)
             print(encoding_sentence(cleaned_eng))
 
         elif is_validated_morse_code(user_input):
