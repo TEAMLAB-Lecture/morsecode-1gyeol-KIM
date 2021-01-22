@@ -86,16 +86,15 @@ def is_validated_english_sentence(user_input):
     """
     # ===Modify codes below=============
     # 조건에 따라 변환되어야 할 결과를 result 변수에 할당 또는 필요에 따라 자유로운 수정
-    eng_str = ".,!? abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-    flag = 0
     for char in user_input:
-        if char != ' ':
-            flag = 1
-        if char not in eng_str:
+        if char.isdigit():
             return False
-    if flag:
-        return True
-    return False         # user_input 값들이 모두 ' '인 경우
+        if char in """_@#$%^&*()-+=[]{}"';:\|`~""":
+            return  False
+    remove_str_list = ".,!?"
+    user_input = "".join([char for char in user_input if char not in remove_str_list]).strip()
+    result = len(user_input) != 0
+    return result
     # ==================================
 
 
