@@ -158,12 +158,15 @@ def get_cleaned_english_sentence(raw_english_sentence):
     """
     # ===Modify codes below=============
     # 조건에 따라 변환되어야 할 결과를 result 변수에 할당 또는 필요에 따라 자유로운 수정
-    result = ''
-    raw_english_sentence.strip()
-    for char in raw_english_sentence:
-        if char not in ".,!?":
-            result += char
-    return result
+    # result = ''
+    # raw_english_sentence.strip()
+    # for char in raw_english_sentence:
+    #     if char not in ".,!?":
+    #         result += char
+    # return result
+    for c in [".", ",", "!", "?"]:
+        raw_english_sentence = raw_english_sentence.replace(c, "")
+    return raw_english_sentence.strip()
     # ==================================
 
 
